@@ -24,7 +24,8 @@ export default class Inventario {
         } else {
             let gg = this.inicio;
             this.inicio = producto;
-            producto.siguiente = gg;
+            this.inicio.siguiente = gg;
+            this.inicio.siguiente.anterior = this.inicio;   
         }
     }
 
@@ -96,6 +97,8 @@ export default class Inventario {
             
             if ((aux+1) === pos){
                 newProd.siguiente = gg.siguiente;
+                newProd.anterior = gg;
+                gg.siguiente.anterior = newProd;
                 gg.siguiente = newProd;
             }
         }
